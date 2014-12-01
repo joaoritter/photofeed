@@ -65,7 +65,7 @@ var generateSize = function() {
     if (window_width > 1200) {
         if (random < .3) { size = '' } //30% 500px
         else if (random < .6) { size = '_z' } //30% 640px
-        else if (random < .9) { size = '_c' } //20% 800px
+        else if (random < .9) { size = '_c' } //30% 800px
         else { size = '_b' } //10% 1024px
     } else if (window_width > 810) {
         if (random < .3) { size = '' } //30% 500px
@@ -73,6 +73,7 @@ var generateSize = function() {
         else { size = '_c' } //20% 800px
     } else if (window_width > 650) {
         size = '_z' //100% 640px
+        photo_insertion_duration = photo_insertion_duration_mobile
     } else if (window_width > 510) {
         size = '_z' //100% 500px
         photo_insertion_duration = photo_insertion_duration_mobile
