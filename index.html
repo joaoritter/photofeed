@@ -1,0 +1,44 @@
+<!--
+    DESCRIPTION:
+    This website is a minimalistic way for photographers to tell stories via their photographs. As the site pulls photos from a web service, 
+    it lazily compacts them to the gallery, creating an unbalanced composition. On larger screens, the gallery strategically chooses the photo's size
+    at runtime; this means that on every refresh, photos may be assigned a different size. Since the gallery is formed at runtime, having different 
+    sizes means the gallery will be curated differently each time the page is loaded. The result is a clean and delightfully unpredictable
+    tour of an artist's photographs.
+
+    PLUGINS USED:
+    I made use of a wonderful plugin 'Stalactite' by Jono Brandel. I editted the plugin to allow it to support clean row transitions and 
+    multi-width elements, two features that are vital to this site's display mechanism.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <!-- styles -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- scripts -->
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/stalactite.js"></script>
+        <script type="text/javascript" src="js/animate-enhanced.min.js"></script>
+        <script src="js/ready.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid banner">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 id="artists_name"></h1> 
+                </div> 
+            </div> 
+        </div>
+        <hr>
+        <div class="container-fluid gallery">
+            <div class="row">
+                <div class="col-xs-12 main_column"> 
+                    <div id="photo_container" class="center-block"></div>
+                </div> 
+            </div> 
+        </div>
+    </body>
+</html>
