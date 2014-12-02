@@ -6,6 +6,10 @@ var tyler = {
     "name": "Tyler Hayes",
     "flickr_id": '93031553@N05'
 }
+var john = {
+    "name": "John Stavas",
+    "flickr_id": '95249750@N05'
+}
 var mikey = {
     "name": "Mikey $harks",
     "flickr_id": '129710171@N04'

@@ -14,7 +14,7 @@ hr {
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
     font-weight: 700;
     color: black;
-    line-height: 35px; /* cuts off top */
+    line-height: 40px; /* cuts off top */
 }
 
 #photo_container {
