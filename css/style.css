@@ -5,16 +5,21 @@ img {
 hr { 
     width: 80%; 
     float: right;
+    margin-top: 0px;
+}
+
+.banner {
+    margin-top: -5px; /* cuts off top */ 
 }
 
 .banner h1{
-    font-size: 50px;
+    font-size: 30px;
     text-transform: uppercase;
     text-align: right;
-	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+    font-family: Tahoma, Century Gothic, sans-serif;
     font-weight: 700;
     color: black;
-    line-height: 40px; /* cuts off top */
+    margin: 0;
 }
 
 #photo_container {
@@ -33,7 +38,7 @@ hr {
 }
 
 .loading h3 {
-    font-size: 40px;
+    font-size: 20px;
     text-transform: lowercase;
     font-family: Lucida Sans, Century Gothic, Tahoma, sans-serif;
     font-weight: 100;
@@ -49,12 +54,12 @@ hr {
 @media (min-width: 590px){
     .banner h1{ font-size: 70px; }
     #photo_container * { padding: 5px; }
-    .loading h3 { font-size: 20px; }
 }
   
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     .banner h1{ font-size: 120px; }
+    .banner { margin-top: -33px; /* cuts off top */ }
 }
 
 

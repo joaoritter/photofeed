@@ -82,13 +82,10 @@ var generateSize = function() {
         else { size = '_c' } //20% 800px
     } else if (window_width > 650) {
         size = '_z' //100% 640px
-        photo_insertion_duration = photo_insertion_duration_mobile
     } else if (window_width > 510) {
         size = '_z' //100% 500px
-        photo_insertion_duration = photo_insertion_duration_mobile
     } else {
         size = '_n' //100% 320px
-        photo_insertion_duration = photo_insertion_duration_mobile
     }
     return size;
 }
@@ -112,6 +109,8 @@ function shuffle(array) {
 }
 
 var display = function(gallery) {
+    var window_width = $(window).width();
+    if (window_width < 651) {  photo_insertion_duration = photo_insertion_duration_mobile }
     gallery.stalactite({
         duration: photo_insertion_duration,
         easing: 'swing', 
