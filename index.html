@@ -26,6 +26,18 @@
         <script src="js/ready.js"></script>
     </head>
     <body>
+        <div id='circle'></div>
+        <div id='form'>
+            <form>
+                <label for="flickr_id">Flickr ID
+                <input type="text" name="flickr_id">
+                </label>
+                <label for="name">Name
+                <input type="text" name="name">
+                </label>
+            </form>
+             <span id='error' style='color: red;'>invalid</span>       
+        </div>
         <div class="container-fluid banner">
             <div class="row">
                 <div class="col-xs-12">
@@ -48,6 +60,7 @@
                     <div id="troubleshoot_message" class="loading">
                         <h3>...try refreshing the page</h3>
                     </div>
+
                     <div id="photo_container" class="center-block"></div>
                 </div> 
             </div> 

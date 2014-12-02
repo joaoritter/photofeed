@@ -8,6 +8,78 @@ hr {
     margin-top: 0px;
 }
 
+#circle {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    top: 30px;
+    left: 30px;
+    border-radius: 50px;
+    background-color: #aaa;
+    z-index: 1000;
+    opacity: 0.1;
+    -webkit-transition: background-color 0.1s ease-in-out;
+    -moz-transition:  background-color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out;
+    -ms-transition: background-color 0.1s ease-in-out; 
+    transition: background-color 0.1s ease-in-out;
+}
+
+#circle:hover {
+    background-color: #ddd;
+}
+
+#form {
+    position: fixed;
+    width: 150px;
+    height: 140px;
+    top: 20px;
+    left: 20px;
+    padding-left: 10px;
+    padding-top: 45px;
+    z-index: 1000;
+    display: none;
+    background: rgba(255,255,255,0.5);
+}
+
+#form label {
+    float: left;
+    font-family: Lucida Sans, Century Gothic, Tahoma, sans-serif;
+    font-size: 10px;
+    font-weight: 100;
+}
+
+#form input {
+    border: none;
+    border-bottom: thin solid #eee;
+    width: 80%;
+    float: left;
+    background: none;
+}
+
+#form input:focus {
+    outline-width: 0; 
+}
+
+::-webkit-input-placeholder {  /* WebKit browsers */
+    color: #666;
+}
+:-moz-placeholder {  /* Mozilla Firefox 4 to 18 */
+    color: #666;
+    opacity: 1;
+}
+::-moz-placeholder {  /* Mozilla Firefox 19+ */
+    color: #666;
+    opacity: 1;
+}
+:-ms-input-placeholder {  /* Internet Explorer 10+ */
+    color: #666;
+}
+
+#form #error {
+    display: none; 
+}
+
 .banner {
     margin-top: -5px; /* cuts off top */ 
 }
@@ -18,6 +90,7 @@ hr {
     text-align: right;
     font-family: Tahoma, Century Gothic, sans-serif;
     font-weight: 700;
+    z-index: 1;
     color: black;
     margin: 0;
 }
