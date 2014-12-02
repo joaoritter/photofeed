@@ -98,7 +98,7 @@ var num_imgs_loaded_before_displaying = 20;
     var $content = $this.find(':not(' + selector + ')');
     var loaded_imgs = 1;
     if ($assets.length > 0) {
-        if $assets.length < num_imgs_loaded_before_displaying) { num_imgs_loaded_before_displaying = $assets.length }
+        if ($assets.length < num_imgs_loaded_before_displaying) { num_imgs_loaded_before_displaying = $assets.length }
         var idx_of_loaded_imgs = [];
         var loaded = false;
         $assets.each(function(i) {
