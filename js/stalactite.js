@@ -1,6 +1,7 @@
 /** This plugin has been edited and debugged by Joao Ritter for the purposes of this site.
-*   Specifically, lines 148 - 157 were added to allow for clean row transitions and support 
-*   for multisized elements.
+*   Specifically, lines 164 - 171 were added to allow for clean row transitions and support 
+*   for multisized elements. Lines 96-124 were added to ensure that the photos are loaded before 
+*   they are introduced to the gallery.
 * **/
 
 /**
@@ -24,6 +25,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+var num_imgs_loaded_before_displaying = 20;
 
 (function($) {
 
@@ -87,34 +90,41 @@
         });
       }
 
-      // Gather all assets in the element
-      var selector = 'img, embed, iframe, audio, video, div';
-      var $assets = $this
-        .children()
-        .not(options.cssSelector)
-        .find(selector);
-      var $content = $this
-        .find(':not(' + selector + ')');
+     /** this section written by Joao Ritter
+      *********************************************************/
 
-      var loadedImgs = 0;
-      //Make sure all the elements are loaded before we start packing
-      console.log($assets.length);
-      if ($assets.length > 0) {
+    var selector = 'img';
+    var $assets = $this.children().not(options.cssSelector).filter(selector);
+    var $content = $this.find(':not(' + selector + ')');
+    var loaded_imgs = 1;
+    if ($assets.length > 0) {
+        var idx_of_loaded_imgs = [];
+        var loaded = false;
         $assets.each(function(i) {
-          console.log('loading');
-          var $asset = $(this).bind('load', function() {
-            animateIn($asset);
-            loadedImgs++;
-            console.log(loadedImgs, $assets.length);
-            if (loadedImgs >= $assets.length) {
-              pack($this, calculateOffset, params, options);
-            }
-          });
+            var $asset = $(this).one('load', function() {
+                idx_of_loaded_imgs.push(i);
+                console.log(loaded_imgs, $assets.length);
+                //if the first 'num_imgs_loaded_before_displaying' images have been loaded -> display. 
+                for (var j = 0; j < num_imgs_loaded_before_displaying; j++) {
+                    if (idx_of_loaded_imgs.indexOf(j) < 0) { break; } 
+                    if (j == num_imgs_loaded_before_displaying - 1 && !loaded) {
+                        loaded = true;
+                        console.log("displaying ", loaded_imgs + 1);
+                        $('.loading').fadeOut("slow", function() { 
+                            pack($this, calculateOffset, params, options);
+                        });
+                    }
+                }
+                animateIn($asset);
+                loaded_imgs++;
+            });
+            //if the image is cached, call 'load' on it
+            if(this.complete) { $(this).load() } 
         });
-      } else {
-        console.log('no need to load');
-        pack($this, calculateOffset, params, options);
-      }
+    } else { pack($this, calculateOffset, params, options); }
+
+      /* end section by Joao Ritter
+       ********************************************************/
 
       // This measures the distance between the current child element and the
       // element `relative`ly above it. Then animates to the pack.
@@ -147,7 +157,10 @@
             y1 = $this.offset().top - vMargin, y2 = y1 + outerHeight;
         if ($prev.length > 0) {
           // if (x1 < $prev.offset().left && i > 0 && i !== params.i) {
-          
+         
+        /* begin section edited by Joao Ritter
+         *****************************************************/
+
           if (((y1 >= greatest_y_seen && row != 0) || x1 < $prev.offset().left) && i > 0 && i !== params.i) {
             row++;
             params.row = row;
@@ -156,6 +169,10 @@
             params.i = i;
           }
         }
+
+        /* end section by Joao Ritter
+         *************************************************/
+
         if (y2 > greatest_y_seen) { greatest_y_seen = y2}
 
         var offsetY = 0;

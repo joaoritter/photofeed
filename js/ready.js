@@ -14,13 +14,18 @@ var mikey = {
 //Global options
 var artist = kyle; //the artist
 var should_photos_shuffle = false; //if false, the order is determined by the API response.
-var photo_insertion_duration = 750; //the time it takes for each photo to fade and compact into the gallery.
-var photo_insertion_duration_mobile = 350; //the time it takes for each photo to fade and compact into the gallery on mobile.
+var photo_insertion_duration = 600; //the time it takes for each photo to fade and compact into the gallery.
+var photo_insertion_duration_mobile = 300; //the time it takes for each photo to fade and compact into the gallery on mobile.
 
 $(document).ready(function() {
+    createTroubleshootMessage();
     addName();
     createPhotoGallery();
 });
+
+var createTroubleshootMessage = function() {
+    setTimeout(function(){$("#troubleshoot_message").css('visibility', 'visible')}, 6000);
+}
 
 var addName = function() {
     var artists_name_selector = '#artists_name';
@@ -108,7 +113,7 @@ var display = function(gallery) {
         easing: 'swing', 
         cssPrep: true,
         loader: '<img />',
-        fluid: true   
+        fluid: false   
     });
     gallery.fadeIn();
 }
