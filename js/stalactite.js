@@ -26,7 +26,7 @@
  * limitations under the License.
  */
 
-var num_imgs_loaded_before_displaying = 20;
+var num_imgs_loaded_before_displaying = 10;
 
 (function($) {
 
